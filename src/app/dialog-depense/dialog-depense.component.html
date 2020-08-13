@@ -1,0 +1,30 @@
+<div fxLayoutAlign="center center">
+  <div mat-dialog-content >
+    <mat-toolbar color="accent">
+      Suppression d'une dépense
+    </mat-toolbar>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <div fxLayoutAlign="stretch" fxLayout="row">
+        <div fxFlex="30">Nature</div>
+        <div fxFlex="70">{{data.nature}}</div>
+      </div>
+      <div fxLayoutAlign="stretch" fxLayout="row">
+        <div fxFlex="30">Libellé</div>
+        <div fxFlex="70">{{data.libelle}}</div>
+      </div>
+      <div fxLayoutAlign="stretch" fxLayout="row">
+        <div fxFlex="30">Date</div>
+        <div fxFlex="70">{{data.dd | date:"dd/MM/yyyy"}}</div>
+      </div>
+      <div fxLayoutAlign="stretch" fxLayout="row">
+        <div fxFlex="30">Montant</div>
+        <div fxFlex="70">{{data.montant | currency:"EUR"}}</div>
+      </div>
+
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Annuler</button>
+      <button mat-button mat-dialog-close="valide" cdkFocusInitial>Ok</button>
+    </div>
+  </div>
+</div>

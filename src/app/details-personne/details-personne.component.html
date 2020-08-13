@@ -1,0 +1,32 @@
+<mat-card class="details" *ngIf="!loading">
+  <mat-card-header>
+    <mat-card-title>{{personne.prenom}} {{personne.nom}}</mat-card-title>
+    <mat-card-subtitle>{{personne.montantDepenses| currency:"EUR" }} Plafond
+      : {{personne.plafond| currency:"EUR" }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px" (click)="ajoute()">
+      <mat-icon>add_circle</mat-icon>
+      <p>Ajouter une dépense</p>
+    </div>
+      <cdk-virtual-scroll-viewport itemSize="10" class="details-list-viewport">
+        <div *cdkVirtualFor="let nature of personne.naturesBis">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{nature}}</mat-card-title>
+              <mat-card-subtitle>{{personne.getMontantByNature(nature)| currency:"EUR"}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-list-item *ngFor="let depense of personne.getDepensesByNature(nature)">
+                {{depense.libelle}} {{depense.montant| currency:"EUR"}}
+
+                <mat-icon (click)="edit(depense)" >edit</mat-icon>
+ <!--               <mat-icon (click)="edit(depense)">edit</mat-icon>-->
+                <mat-icon (click)="suppression(depense)">delete</mat-icon>
+              </mat-list-item>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </cdk-virtual-scroll-viewport>
+  </mat-card-content>
+</mat-card>

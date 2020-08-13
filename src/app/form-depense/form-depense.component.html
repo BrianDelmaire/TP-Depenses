@@ -1,0 +1,45 @@
+<div fxLayoutAlign="center center">
+  <mat-card fxFlex="80">
+    <mat-toolbar color="accent">
+      {{pageTitle}}
+    </mat-toolbar>
+    <mat-card-content fxLayout="column" fxLayoutAlign="center" class="illus1-card-content">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()" fxLayoutAlign="stretch" fxLayout="column">
+        <mat-form-field>
+          <mat-label>Nature</mat-label>
+          <mat-select formControlName="nature">
+            <mat-option *ngFor="let nature of natures" [value]="nature">
+              {{nature}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Libellé" formControlName="libelle">
+          <div *ngIf="libelle.invalid && (libelle.dirty || libelle.touched)" class="mat-error">
+            <div *ngIf="libelle?.errors.required">Le libellé est obligatoire</div>
+            <div *ngIf="libelle?.errors.minlength">Le libellé doit comporter au moins 6 caractères</div>
+          </div>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="dd">
+          <div *ngIf="dd.invalid && (dd.dirty || dd.touched)" class="mat-error">
+            <div *ngIf="dd?.errors.required">La date est obligatoire</div>
+          </div>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Montant" formControlName="montant">
+          <div *ngIf="montant.invalid && (montant.dirty || montant.touched)" class="mat-error">
+            <div *ngIf="montant?.errors.required">Le montant est obligatoire</div>
+            <div *ngIf="montant?.errors.pattern">Format montant ! </div>
+          </div>
+        </mat-form-field>
+
+        <button type="submit"  [disabled]="editForm.invalid" mat-stroked-button mat-raised-button color="accent">Valide
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

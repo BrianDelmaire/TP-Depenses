@@ -1,0 +1,9 @@
+.ecran {
+  /*
+  margin-top: 100px;
+  */
+  margin: 50px;
+  max-height: 700px;
+  height: 700px;
+  border: brown solid 1px;
+}

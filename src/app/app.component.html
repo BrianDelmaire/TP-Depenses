@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="header">
+ {{title}}
+  <span class="nav-tool-items">
+    <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+    <a mat-button routerLink="/personnes" routerLinkActive="active">Liste des Personnes</a>
+  </span>
+</mat-toolbar>
+
+<div  class="ecran">
+<router-outlet></router-outlet>
+</div>
+
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Trace
+      </mat-panel-title>
+      <mat-panel-description>
+        {{panelOpenState ? 'Fermer':'Ouvrir' }} le contenu de la trace
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <h3>Contenu de la trace</h3>
+    <app-messages></app-messages>
+  </mat-expansion-panel>
+</mat-accordion>

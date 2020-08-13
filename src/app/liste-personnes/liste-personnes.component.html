@@ -1,0 +1,5 @@
+<mat-list *ngIf="!loading">
+  <mat-list-item *ngFor="let personne of personnes">
+    <a [routerLink]="['/details', personne.id]"> {{personne.prenom}} {{personne.nom}} {{personne.montantDepenses | currency:"EUR"}}</a>
+  </mat-list-item>
+</mat-list>

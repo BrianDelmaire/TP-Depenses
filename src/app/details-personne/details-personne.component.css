@@ -1,0 +1,9 @@
+.details {
+  height: 700px;
+  max-height: 700px;
+}
+
+.details-list-viewport {
+  height: 500px;
+  border: 1px solid black;
+}
